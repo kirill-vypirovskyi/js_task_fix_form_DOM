@@ -2,15 +2,22 @@
 
 const inputs = document.querySelectorAll('.field-text');
 
+const capitalize = (title) => {
+  return title.charAt(0).toUpperCase() + title.slice(1);
+};
+
+const normalize = (title) => {
+  return title.replace(/Name/, ' name');
+};
+
 for (const input of inputs) {
   const label = document.createElement('label');
-  const inputName = input.name.charAt(0).toUpperCase()
-    + input.name.slice(1).replace(/Name/, ' name');
+  const normalizedName = normalize(capitalize(input.name));
 
   label.className = 'field-label';
   label.htmlFor = input.id;
-  label.textContent = inputName;
+  label.textContent = normalizedName;
 
   input.before(label);
-  input.placeholder = inputName;
+  input.placeholder = normalizedName;
 }
