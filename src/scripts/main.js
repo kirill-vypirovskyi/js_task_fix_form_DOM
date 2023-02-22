@@ -7,10 +7,10 @@ const capitalize = (title) => {
 };
 
 const normalize = (title) => {
-  return title.replace(/Name/, ' name');
+  return title.replace('Name', ' name');
 };
 
-for (const input of inputs) {
+inputs.forEach(input => {
   const label = document.createElement('label');
   const normalizedName = normalize(capitalize(input.name));
 
@@ -20,4 +20,4 @@ for (const input of inputs) {
 
   input.before(label);
   input.placeholder = normalizedName;
-}
+});
